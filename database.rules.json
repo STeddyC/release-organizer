@@ -1,0 +1,45 @@
+{
+  "rules": {
+    "releases": {
+      "$uid": {
+        ".read": "auth != null && auth.uid == $uid",
+        ".write": "auth != null && auth.uid == $uid",
+        ".indexOn": ["releaseDate"]
+      }
+    },
+    "submissions": {
+      "$uid": {
+        ".read": "auth != null && auth.uid == $uid",
+        ".write": "auth != null && auth.uid == $uid",
+        ".indexOn": ["submissionDate", "expectedAnswerDate"]
+      }
+    },
+    "posts": {
+      ".read": "auth != null",
+      ".write": "auth != null",
+      ".indexOn": ["createdAt"]
+    },
+    "users": {
+      "$uid": {
+        ".read": "auth != null && auth.uid == $uid",
+        ".write": "auth != null && auth.uid == $uid",
+        "notifications": {
+          ".read": "auth != null && auth.uid == $uid",
+          ".write": "auth != null && auth.uid == $uid",
+          ".validate": "newData.hasChildren(['release', 'submission', 'answer', 'social', 'pushEnabled', 'email'])",
+          "release": { ".validate": "newData.isBoolean()" },
+          "submission": { ".validate": "newData.isBoolean()" },
+          "answer": { ".validate": "newData.isBoolean()" },
+          "social": { ".validate": "newData.isBoolean()" },
+          "pushEnabled": { ".validate": "newData.isBoolean()" },
+          "email": { ".validate": "newData.isBoolean()" }
+        },
+        "fcmToken": {
+          ".read": "auth != null && auth.uid == $uid",
+          ".write": "auth != null && auth.uid == $uid",
+          ".validate": "newData.isString()"
+        }
+      }
+    }
+  }
+}

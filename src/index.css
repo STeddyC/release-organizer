@@ -1,0 +1,134 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-gray-50 dark:bg-dark-50 text-text-light dark:text-text-dark;
+  }
+}
+
+/* Calendar custom styles */
+.calendar-container {
+  @apply bg-white dark:bg-dark-100 rounded-lg shadow-lg overflow-hidden border border-gray-100 dark:border-dark-200;
+}
+
+.calendar-header {
+  @apply bg-primary text-white p-3 sm:p-4 flex items-center justify-between;
+}
+
+.calendar-nav-button {
+  @apply p-1.5 hover:bg-white/10 rounded-full transition-colors;
+}
+
+.calendar-weekday {
+  @apply py-2 sm:py-3 text-center text-xs font-medium text-gray-400 dark:text-gray-500 bg-gray-50 dark:bg-dark-200 border-b border-gray-100 dark:border-dark-300;
+}
+
+.calendar-day {
+  @apply relative h-16 sm:h-24 p-1 border-b border-r border-gray-100 dark:border-dark-200 transition-colors;
+}
+
+.calendar-day-header {
+  @apply flex items-center justify-between mb-1;
+}
+
+.calendar-day-number {
+  @apply text-xs font-medium w-5 h-5 sm:w-6 sm:h-6 flex items-center justify-center rounded-full;
+}
+
+.calendar-event {
+  @apply text-[10px] px-1.5 py-1 rounded-md truncate mb-0.5 font-medium;
+}
+
+.calendar-event-release {
+  @apply bg-primary/10 text-primary dark:bg-primary/20;
+}
+
+.calendar-event-submission {
+  @apply bg-blue-100 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400;
+}
+
+.calendar-event-expected {
+  @apply bg-orange-100 text-orange-600 dark:bg-orange-900/30 dark:text-orange-400;
+}
+
+.calendar-event-count {
+  @apply text-[10px] font-medium px-1.5 py-0.5 rounded-full bg-primary/10 dark:bg-primary/20 text-primary;
+}
+
+.events-list {
+  @apply bg-white dark:bg-dark-100 rounded-lg shadow-lg p-4 sm:p-6 border border-gray-100 dark:border-dark-200;
+}
+
+.event-item {
+  @apply flex items-center gap-2 sm:gap-3 p-2 sm:p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-dark-200 transition-colors;
+}
+
+.event-artwork {
+  @apply w-10 h-10 sm:w-12 sm:h-12 rounded-lg object-cover;
+}
+
+.event-artwork-placeholder {
+  @apply w-10 h-10 sm:w-12 sm:h-12 bg-gray-100 dark:bg-dark-200 rounded-lg flex items-center justify-center;
+}
+
+/* Modal Responsive Styles */
+.modal-overlay {
+  @apply fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4;
+}
+
+.modal-content {
+  @apply bg-white dark:bg-dark-100 rounded-lg p-4 sm:p-6 w-full max-w-md max-h-[90vh] overflow-y-auto;
+}
+
+/* Form Responsive Styles */
+.form-input {
+  @apply w-full rounded-md border border-gray-300 dark:border-dark-300 p-2 focus:ring-primary focus:border-primary dark:bg-dark-200 dark:text-text-dark text-sm;
+}
+
+.form-label {
+  @apply block text-sm font-medium text-text-light dark:text-text-dark mb-1;
+}
+
+.form-button {
+  @apply px-4 py-2 rounded-md transition-colors text-sm font-medium;
+}
+
+.primary-button {
+  @apply bg-primary text-white hover:bg-primary/90 form-button;
+}
+
+.secondary-button {
+  @apply border border-gray-300 dark:border-dark-300 text-text-light dark:text-text-dark hover:bg-gray-50 dark:hover:bg-dark-200 form-button;
+}
+
+/* Make the layout responsive on small screens */
+@media (max-width: 640px) {
+  .calendar-container {
+    @apply mx-auto;
+  }
+  
+  .events-list {
+    @apply mt-4;
+  }
+}
+
+/* Sidebar transition styles */
+.sidebar-enter {
+  transform: translateX(-100%);
+}
+
+.sidebar-enter-active {
+  transform: translateX(0);
+  transition: transform 300ms ease-in-out;
+}
+
+.sidebar-exit {
+  transform: translateX(0);
+}
+
+.sidebar-exit-active {
+  transform: translateX(-100%);
+  transition: transform 300ms ease-in-out;
+}

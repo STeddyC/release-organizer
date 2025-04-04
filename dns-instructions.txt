@@ -1,0 +1,46 @@
+DNS Setup Instructions for Hostinger:
+
+1. Log in to your Hostinger control panel
+2. Navigate to "Domains" > "releaseorganizer.com" > "DNS"
+3. Verify nameservers are set to:
+   - ns1.dns-parking.com
+   - ns2.dns-parking.com
+
+4. Add/update the following DNS records:
+
+A Record:
+- Host: @
+- Points to: 195.35.39.69
+- TTL: 14400
+
+CNAME Record:
+- Host: www
+- Points to: @
+- TTL: 14400
+
+TXT Records:
+- Host: @
+- Value: v=spf1 include:_spf.hostinger.com ~all
+- TTL: 14400
+
+- Host: _dmarc
+- Value: v=DMARC1; p=none; rua=mailto:admin@releaseorganizer.com
+- TTL: 14400
+
+MX Records:
+- Host: @
+- Priority: 10
+- Points to: mx1.hostinger.com
+- TTL: 14400
+
+- Host: @
+- Priority: 20
+- Points to: mx2.hostinger.com
+- TTL: 14400
+
+5. Wait for DNS propagation (can take up to 24-48 hours)
+6. Verify DNS propagation using: https://dnschecker.org
+
+Note: After DNS propagation is complete, SSL certificate will automatically become active.
+
+Important: Clear your browser cache and DNS cache to ensure you're getting the latest records.
